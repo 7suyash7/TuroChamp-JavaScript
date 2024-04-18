@@ -10,7 +10,7 @@ class TurochampAlgo {
   getEvaluation() {
     const t = this.game.turn();
     this.game.setTurn("w");
-    const val = this._getPositionalValue() + 100 * this._getMaterialValue();
+    let val = this._getPositionalValue() + 100 * this._getMaterialValue();
     this.game.setTurn(t);
     return val;
   }
@@ -25,7 +25,7 @@ class TurochampAlgo {
 
     for (const move of moves) {
 
-      const val = this._alphaBetaSearch(move, 1, MIN, MAX, false) * 100;
+      let val = this._alphaBetaSearch(move, 1, MIN, MAX, false) * 100;
       this.game.move(move);
       val += this._getPositionEvaluation();
       val += this._countKingSafetyScore(move);
@@ -61,7 +61,7 @@ class TurochampAlgo {
       for (const m of this.game.moves({ verbose: true })) {
         if (m.flags === "c" || m.flags === "e") {
           considerableMoves++;
-          const val = this._alphaBetaSearch(
+          let val = this._alphaBetaSearch(
             m,
             currDepth + 1,
             alpha,
@@ -73,7 +73,7 @@ class TurochampAlgo {
 
           if (beta <= alpha) break;
         } else {
-          const val = this._getMaterialValueSub();
+          let val = this._getMaterialValueSub();
           best = Math.max(best, val);
           beta = Math.max(beta, best);
           if (beta <= alpha) break;
@@ -95,7 +95,7 @@ class TurochampAlgo {
       for (let m of this.game.moves({ verbose: true })) {
         if (m.flags === "c" || m.flags === "e") {
           considerableMoves++;
-          const val = this._alphaBetaSearch(
+          let val = this._alphaBetaSearch(
             m,
             currDepth + 1,
             alpha,
@@ -106,7 +106,7 @@ class TurochampAlgo {
           beta = Math.min(beta, best);
           if (beta <= alpha) break;
         } else {
-          const val = this._getMaterialValueSub();
+          let val = this._getMaterialValueSub();
           best = Math.min(best, val);
           beta = Math.min(beta, best);
           if (beta <= alpha) break;
@@ -129,7 +129,7 @@ class TurochampAlgo {
 
     const t = this.game.turn();
     this.game.setTurn("w");
-    const val = this._getPositionalValue();
+    let val = this._getPositionalValue();
     this.game.setTurn(t);
     
     return val;
