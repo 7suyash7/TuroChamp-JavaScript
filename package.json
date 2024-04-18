@@ -1,0 +1,12 @@
+{
+  "name": "turochamp-javascript",
+  "version": "1.0.0",
+  "description": "A Chess Engine which you can play against in the Browser. The Engine is implemented based on the paper of Alan Turing and David Champernowne's Chess Engine which they authored  in 1948.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
